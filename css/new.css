@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  flex-flow: column;
+  align-items: start;
+  justify-content: center;
+}
+
+button {
+  width: 14.3%;
+  background-color: rgb(114, 196, 114);
+}
