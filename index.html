@@ -8,6 +8,8 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <title>Contacts</title>
 </head>
 
@@ -15,7 +17,7 @@
     <div id="my-app" class="contact-app">
         <div class="header-box">
             <h1>Contacts</h1>
-            <button class="add-btn" @click="addModal = true">Add New Contact</button>
+            <button class="add-btn" @click="addModalClicked">Add New Contact</button>
         </div>
 
         <div class="contact-list">
@@ -33,14 +35,18 @@
                     <td>{{item.family}}</td>
                     <td>{{item.phone}}</td>
                     <td>{{item.email}}</td>
+
+                    <td class="icon-container"><i class="material-icons" @click="showContact(item.id)">edit</i></td>
+                    <td class="icon-container"><i class="material-icons" @click="delteIconClicked(item.id)">delete</i></td>
                 </tr>
 
             </table>
         </div>
 
         <div>
-            <div class="overlay" v-if="addModal" @click="addModal = false"></div>
+            <div class="overlay" v-if="showOverlay" @click="overlayClicked"></div>
             <div class="modal add-modal" v-if="addModal">
+
                 <div>
                     <h2 style="margin-top: 0;">Add Contact</h2>
                 </div>
@@ -52,7 +58,41 @@
                 <label>Email : <br><input placeholder="pari@gmail.com" v-model="email" type="text"> </label><br><br>
                 <button class="add-btn" v-on:click="addNew"
                     :style="isEmpty ? 'pointer-events: none; opacity: 0.5' : ''">Add</button>
+
             </div>
+            <div class="modal edit-modal" v-if="editModal">
+                <div>
+                    <h2>Edit Contact</h2>
+                </div>
+                <hr>
+                <br>
+                <label>Name : <br><input placeholder="Parnia" v-model="name" type="text"> </label><br><br>
+                <label>Family : <br><input placeholder="Maroofi" v-model="family" type="text">
+                </label><br><br>
+                <label>Phone : <br><input placeholder="09221264075" v-model="phone" type="number">
+                </label><br><br>
+                <label>Email : <br><input placeholder="pari@gmail.com" v-model="email" type="text">
+                </label><br><br>
+                <button class="edit-btn" @click="editContact"
+                    :style="isEmpty ? 'pointer-events: none; opacity: 0.5' : ''">Edit</button>
+
+            </div>
+            <div class="modal confirm-modal" v-if="confirmModal">
+                <div class="confirm-modal-header">
+                    <h2>Warning</h2>
+                    <i class="material-icons">warning</i>
+                </div>
+                <hr>
+                <div class="confirm-modal-body">
+
+                    <p>Are you sure you want to delete this record?</p>
+                    <div class="btn-box">
+                        <button class="cancel-btn">No</button>
+                        <button class="ok-btn" @click="deleteContact(id)">Yes</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 

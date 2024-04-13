@@ -7,9 +7,9 @@ body {
 tr:nth-child(even) {
   background-color: #29d6d6;
 }
-
-tr {
-  border-bottom: 4px solid aqua;
+tr:hover {
+  background-color: #0d214f;
+  color: white;
 }
 
 td {
@@ -34,6 +34,10 @@ table {
   background-color: #29d6d6;
   font-weight: bold;
   cursor: pointer;
+}
+.header-box .add-btn:hover {
+  background-color: #0d214f;
+  color: white;
 }
 
 .overlay {
@@ -65,4 +69,61 @@ table {
   width: 50px;
   height: 25px;
   border-radius: 8px;
+}
+
+.icon-container {
+  width: 80px;
+}
+.icon-container i {
+  margin: auto;
+  cursor: pointer;
+}
+.icon-container i:hover {
+  color: aqua;
+}
+
+.confirm-modal-header {
+  padding: 2px 8px;
+  display: flex;
+  justify-content: space-between;
+}
+.confirm-modal-header h2 {
+  margin: 0px;
+}
+.confirm-modal-header i {
+  color: darkorange;
+}
+.confirm-modal-body {
+  display: flex;
+  flex-flow: column;
+}
+.confirm-modal-body .btn-box {
+  justify-content: space-around;
+  display: flex;
+}
+.confirm-modal-body .btn-box .ok-btn {
+  background-color: lightgreen;
+  border: none;
+  width: 60px;
+  height: 30px;
+  border-radius: 8px;
+  transition: all 0.4s ease;
+}
+.confirm-modal-body .btn-box .ok-btn:hover {
+  font-weight: bold;
+  width: 66px;
+  height: 33px;
+}
+.confirm-modal-body .btn-box .cancel-btn {
+  background-color: lightcoral;
+  width: 60px;
+  height: 30px;
+  border-radius: 8px;
+  border: none;
+  transition: all 0.4s ease;
+}
+.confirm-modal-body .btn-box .cancel-btn:hover {
+  font-weight: bold;
+  width: 66px;
+  height: 33px;
 }
