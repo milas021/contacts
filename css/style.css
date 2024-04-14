@@ -34,6 +34,7 @@ table {
   background-color: #29d6d6;
   font-weight: bold;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 .header-box .add-btn:hover {
   background-color: #0d214f;
@@ -58,6 +59,8 @@ table {
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 16px;
+  outline: none;
+  animation: fadeIn 0.8s;
 }
 
 .add-modal input {
@@ -126,4 +129,85 @@ table {
   font-weight: bold;
   width: 66px;
   height: 33px;
+}
+
+.edit-modal input {
+  width: 100%;
+}
+.edit-modal .edit-btn {
+  background-color: lightgreen;
+  border: none;
+  width: 50px;
+  height: 25px;
+  border-radius: 8px;
+}
+
+.hidden-snackbar {
+  background-color: lightgreen;
+  width: 300;
+  height: 70;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: -300px;
+  bottom: 20;
+  transition: all 0.3s ease;
+}
+
+.visible-snackbar {
+  background-color: lightgreen;
+  border-radius: 4px;
+  width: 300;
+  height: 70;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 20;
+  bottom: 20;
+  transition: all 0.3s ease;
+}
+
+.pagination-container .pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+.pagination-container .pagination .active {
+  border: 1px solid aqua;
+  border-radius: 50%;
+}
+.pagination-container .pagination .next,
+.pagination-container .pagination .perv {
+  font-size: 28px;
+}
+.pagination-container .pagination li {
+  margin: 2px;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease;
+}
+.pagination-container .pagination li:hover {
+  background-color: aqua;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
