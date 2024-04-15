@@ -4,12 +4,19 @@ body {
   padding: 10px 25px;
 }
 
+button {
+  outline: none;
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
+
 tr {
   &:nth-child(even) {
     background-color: #29d6d6;
   }
 
-  
   &:hover {
     background-color: #0d214f;
     color: white;
@@ -187,10 +194,15 @@ table {
     list-style: none;
     display: flex;
     justify-content: center;
+    user-select: none;
 
-    .active{
+    .active {
       border: 1px solid aqua;
       border-radius: 50%;
+    }
+    .disable-btn {
+      pointer-events: none;
+      opacity: 0.5;
     }
     .next,
     .perv {

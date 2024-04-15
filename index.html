@@ -55,12 +55,15 @@
             <nav>
                 <ul class="pagination">
 
-                    <li class="perv" @click="GetData(page-1,pageSize)">&#60;</li>
+                    <li class="perv" :class="page === 1 ? 'disable-btn' : ''" @click="GetData(page-1,pageSize)">&#60;
+                    </li>
 
-                    <li v-for="item in pageCount" >{{item}}</li>
+                    <li v-for="count in pageCount" @click="GetData(count ,pageSize)"
+                        :class="(page == count) ? 'active' :'' ">{{count}}</li>
 
 
-                    <li class="next" @click="GetData(page+1 ,pageSize)">&gt;</li>
+                    <li class="next" :class="page == pageCount ? 'disable-btn' :''" @click="GetData(page+1 ,pageSize)">
+                        &gt;</li>
 
 
                 </ul>
@@ -85,8 +88,7 @@
                 <label>Family : <br><input placeholder="Maroofi" v-model="family" type="text"> </label><br><br>
                 <label>Phone : <br><input placeholder="09221264075" v-model="phone" type="number"> </label><br><br>
                 <label>Email : <br><input placeholder="pari@gmail.com" v-model="email" type="text"> </label><br><br>
-                <button class="add-btn" v-on:click="addNew"
-                    :style="isEmpty ? 'pointer-events: none; opacity: 0.5' : ''">Add</button>
+                <button class="add-btn" v-on:click="addNew" :disabled="isEmpty">Add</button>
 
             </div>
 

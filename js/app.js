@@ -83,7 +83,7 @@ new Vue({
 
             axios.put(this.baseAddress, body)
                 .then(response => {
-                    this.GetData();
+                    this.GetData(this.page, this.pageSize);
                     this.editModal = false;
                     this.showOverlay = false;
                     this.message = response.data;
@@ -126,7 +126,7 @@ new Vue({
 
             axios.delete(Address)
                 .then(response => {
-                    this.GetData();
+                    this.GetData(this.page, this.pageSize);
                     this.confirmModal = false;
                     this.showOverlay = false;
                     this.message = response.data
@@ -158,6 +158,10 @@ new Vue({
                 }, 3000);
             }
         },
+        pageCount(val, oldVal) {
+            this.page = val;
+            this.GetData(this.page, this.pageSize);
+        }
     },
 
     mounted() {
